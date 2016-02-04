@@ -72,7 +72,7 @@ Comes with default package handlers for the following packages :
 *	presence	RFC3856
 *	dialog		RFC4235
 
-NOTE: The eventserver itself is probably working, but the event packages
+> NOTE: The eventserver itself is probably working, but the event packages
 are still under development and EXPERIMENTAL. Read more about the packages
 below, under the topic "SIP Events".
 
@@ -501,10 +501,9 @@ allowed_request_methods		(default: ["INVITE", "ACK", "PRACK", "CANCEL",
 				we should allow to reach our PSTN gateways.
 
 pstnproxy_challenge_bye_to_pstn_dst (default: true) Should we challenge BYEs sent
-				towards a PSTN gateway? NOTE: This does NOT work
-                                if you have 'free' classes, since we are not
-                                dialog stateful and therefor can't know that the
-                                BYE is sent to a 'free' destination.
+				towards a PSTN gateway? 
+
+> NOTE: This does NOT work if you have 'free' classes, since we are not dialog stateful and therefor can't know that the BYE is sent to a 'free' destination.
 
 pstnproxy_allow_reinvite_to_pstn_dst (default: true) Should re-INVITEs on
 				existing dialogs be allowed?
@@ -522,9 +521,9 @@ number_to_pstn			(default: []) The same as e164_to_pstn, but
 				a E.164 number (like an internal-only number).
 
 defaultroute			(default: "") SIP host name part of default
-				route. Note that if you use e164_to_pstn, you
-				don't have to point defaultroute at your
-				PSTN gateway.
+				route. 
+
+> Note that if you use e164_to_pstn, you don't have to point defaultroute at your PSTN gateway.
 
 homedomain			(required) List of SIP domains this proxy
 				should handle requests for.
@@ -1024,14 +1023,9 @@ parts of yaws.conf configuration file :
         docroot = /path/to/yxa-source/yaws/docroot
   </server>
 
-NOTE: All access control must be performed using Yaws methods of access
-control. Currently, the YXA Yaws SSIs will not perform any kind of
-authentication or authorization, so you must restrict access to the web
-interface using Yaws.
+> NOTE: All access control must be performed using Yaws methods of access control. Currently, the YXA Yaws SSIs will not perform any kind of authentication or authorization, so you must restrict access to the web interface using Yaws.
 
-NOTE 2: The files inside yaws/docroot will probably be installed somewhere
-under /path/to/lib/yxa in the future, I just need to figure out where they
-belong.
+> NOTE 2: The files inside yaws/docroot will probably be installed somewhere under /path/to/lib/yxa in the future, I just need to figure out where they belong.
 
 Then you need to start Yaws with "-name yaws" (or some other node name) in
 order to enable communication between the Yaws node and your YXA node(s).
@@ -1081,15 +1075,15 @@ If you are using Linux, then you will need to
 since YXA wants to use separate sockets for v6 and v4. IPv6 support has only
 been tested on Linux 2.4.x where x >= 20, and Linux 2.6.x where x >= 14.
 
-Note on Erlang OTP R10B-0 through R10B-6 :
-The resolver order was changed in R10B, so now Erlang primarily tries to use
-the 'native' resolver (meaning a C port driver) for DNS resolution.
-Unfortunately, this C port driver only handles getipnodebyname() and not
-getaddrinfo(). The latter is a POSIX standard, and the one that should be used.
-This means that you might not get IPv6 addresses back from
-dnsutil:get_ip_port(), which in turn means YXA won't make outgoing connections
-to IPv6 addresses. This is a problem with some versions of Linux (for example,
-RH7.3 to RH9 based systems).
+> Note on Erlang OTP R10B-0 through R10B-6 :
+> The resolver order was changed in R10B, so now Erlang primarily tries to use
+> the 'native' resolver (meaning a C port driver) for DNS resolution.
+> Unfortunately, this C port driver only handles getipnodebyname() and not
+> getaddrinfo(). The latter is a POSIX standard, and the one that should be used.
+> This means that you might not get IPv6 addresses back from
+> dnsutil:get_ip_port(), which in turn means YXA won't make outgoing connections
+> to IPv6 addresses. This is a problem with some versions of Linux (for example,
+> RH7.3 to RH9 based systems).
 
 
 
@@ -1121,5 +1115,4 @@ default :
   dialog   :    A dialog state agent. The goal was to get 'shared line'
                 working on my Snom phones. Can't say I'm there just yet.
 
-NOTE that ALL these event packages are currently to be considered
-experimental.
+> NOTE that ALL these event packages are currently to be considered experimental.
